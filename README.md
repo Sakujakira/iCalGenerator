@@ -3,7 +3,7 @@ iCalGenerator
 
 Dieser iCal Generator stützt sich auf die als Freeware zur Verfügung gestellten Bibliotheken von http://www.ddaysoftware.com/. 
 
-Entwickelt wird dieser iCal Generator, eigentlich und Ursprünglich für die dotnet Cologne, welche einmal im Jahr in Köln stattfindet. 
+Entwickelt wird dieser iCal Generator, eigentlich und Ursprünglich für die dotnet Cologne, welche einmal im Jahr in Köln stattfindet. Es wurde gewünscht eine Software zu haben, die auf der Kommandozeile eine CSV entgegen nimmt und diese in eine oder mehrere iCal Dateien umwandelt.
 
 Die Entwicklung wird in mehreren Zyklen stattfinden, mit klar definierten Zielen.
 
@@ -15,3 +15,6 @@ Die Entwicklung wird in mehreren Zyklen stattfinden, mit klar definierten Zielen
       -r Nur Zeile r verarbeiten
 3. Veränderbarkeit der Reihenfolge der Felder
 4. Wenn alle Programm Bestandteile vorhanden und evaluiert wurden, wird eine GUI geliefert.
+
+
+english description by and by
