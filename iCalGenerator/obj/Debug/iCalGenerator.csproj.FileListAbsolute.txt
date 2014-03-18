@@ -1,0 +1,9 @@
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\iCalGenerator.exe.config
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\iCalGenerator.exe
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\iCalGenerator.pdb
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\antlr.runtime.dll
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\DDay.Collections.dll
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\bin\Debug\DDay.iCal.dll
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\obj\Debug\iCalGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\obj\Debug\iCalGenerator.exe
+C:\Users\Manuel\Documents\GitHub\iCalGenerator\iCalGenerator\obj\Debug\iCalGenerator.pdb
