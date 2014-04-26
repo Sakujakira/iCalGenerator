@@ -17,12 +17,18 @@ namespace iCalGenerator
 
             for (int i = 0; i < events.Length; i++)
             {
+                EventUIDCheckAndGenerate(filepath, sep, i);
                 string[] tmpEvent = events[i].Split(sep);
-                writeEvent(tmpEvent);
+                writeEvent(tmpEvent, i);
             }
         }
 
-        private static void writeEvent(string[] tmpEvent)
+        private static void EventUIDCheckAndGenerate(string filepath, char sep, int i)
+        {
+            
+        }
+
+        private static void writeEvent(string[] tmpEvent, int count)
         {
             iCalendar iCal = new iCalendar
             {
@@ -52,8 +58,7 @@ namespace iCalGenerator
             evt.IsAllDay = Boolean.Parse(tmpEvent[5]);
             //Kontaktmail
             evt.Organizer = new Organizer(tmpEvent[6]);
-            evt.UID = setUID(tmpEvent);
-            //evt.UID = Guid.NewGuid().ToString();
+            evt.UID = setUID(tmpEvent, count);
             try
             {
 
@@ -74,7 +79,7 @@ namespace iCalGenerator
             
         }
 
-        private static string setUID(String[] a)
+        private static string setUID(String[] a, int count)
         {
             String uid;
 
@@ -88,6 +93,7 @@ namespace iCalGenerator
                 uid = Guid.NewGuid().ToString();
                 Console.WriteLine("INFO: UID unbekannt, habe neue UID erzeugt " + uid);
             }
+            return uid;
         }
 
         private static string[] getEvents(string filepath)
