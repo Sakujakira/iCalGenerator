@@ -11,15 +11,11 @@ namespace iCalGenerator
         static void Main(string[] args)
         {
             //Prüfen wieviele Argumente mitgegeben wurden, und ob die Anzahl der erwartetetn entspricht.
-            if (Validation.argValidation(args))
+            CallObject a = new CallObject();
+            a = Validation.ValidateAll(args);
+            if (a.ChecksSolved)
             {
-                if (Validation.extensionValidation(args))
-                {
-                    if (Validation.fileexists(args[0]))
-                    {
-                        Generator.create(args[0]);
-                    }
-                }
+                Generator.create(a.Path, a.Seperator);
             }
         }
     }
