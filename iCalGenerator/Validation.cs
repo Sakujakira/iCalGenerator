@@ -192,5 +192,10 @@ namespace iCalGenerator
             }
             return returnValue;
         }
+
+        /*internal static bool enoughfields()
+        {
+            
+        }*/
     }
 }

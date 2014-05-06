@@ -17,16 +17,16 @@ namespace iCalGenerator
 
             for (int i = 0; i < events.Length; i++)
             {
-                EventUIDCheckAndGenerate(filepath, sep, i);
+                //EventUIDCheckAndGenerate(filepath, sep, i);
                 string[] tmpEvent = events[i].Split(sep);
                 writeEvent(tmpEvent, i);
             }
         }
 
-        private static void EventUIDCheckAndGenerate(string filepath, char sep, int i)
+        /*private static void EventUIDCheckAndGenerate(string filepath, char sep, int i)
         {
             
-        }
+        }*/
 
         private static void writeEvent(string[] tmpEvent, int count)
         {
@@ -38,48 +38,35 @@ namespace iCalGenerator
             iCal.AddLocalTimeZone();
             var evt = iCal.Create<Event>();
             //Titel
-            evt.Summary = tmpEvent[0];
+            evt.Summary = tmpEvent[1];
             //Beschreibung
-            evt.Description = tmpEvent[1];
+            evt.Description = tmpEvent[7] + "\n\n" + tmpEvent[2];
             //Raum/Ort
-            evt.Location = tmpEvent[2];
+            evt.Location = tmpEvent[3];
             //Versuchte Zeit
             try
             {
-                evt.Start = new iCalDateTime(DateTime.Parse(tmpEvent[3]));
+                evt.Start = new iCalDateTime(DateTime.Parse(tmpEvent[4]));
             } catch(FormatException)
             {
                 Console.WriteLine("ERROR: Das Datum unterliegt aktuell leider strengen Einschränkungen.");
             }
             //Ende
-            int dauer = Int16.Parse(tmpEvent[4]);
+            int dauer = Int16.Parse(tmpEvent[5]);
             evt.End = evt.Start.AddMinutes(dauer);
             //Ganztägig?
-            evt.IsAllDay = Boolean.Parse(tmpEvent[5]);
+            evt.IsAllDay = Boolean.Parse(tmpEvent[6]);
             //Kontaktmail
-            evt.Organizer = new Organizer(tmpEvent[6]);
-            evt.UID = setUID(tmpEvent, count);
-            try
-            {
-
-                System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Test\" + tmpEvent[0].Substring(0, 15) + ".ics", false, System.Text.Encoding.UTF8);
-                file.WriteLine(new iCalendarSerializer().SerializeToString(iCal));
-                file.Close();
-                Console.WriteLine(tmpEvent[0].Substring(0, 15) + ".ics erzeugt");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("INFO: Veranstaltungsname kürzer als 15 Zeichen, verwende vollen Namen.");
-                System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Test\" + tmpEvent[0].Substring(0, tmpEvent[0].Length) + ".ics", false, System.Text.Encoding.UTF8);
-                file.WriteLine(new iCalendarSerializer().SerializeToString(iCal));
-                file.Close();
-                Console.WriteLine(tmpEvent[0].Substring(0, tmpEvent[0].Length) + ".ics erzeugt");
-            }
-            
-            
+            //evt.Organizer = new Organizer(tmpEvent[7]);
+            evt.UID = tmpEvent[8];
+            //evt.UID = setUID(tmpEvent, count);
+            System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Test\" + tmpEvent[0] + ".ics", false, System.Text.Encoding.UTF8);
+            file.WriteLine(new iCalendarSerializer().SerializeToString(iCal));
+            file.Close();
+            Console.WriteLine(tmpEvent[0] + ".ics erzeugt");
         }
 
-        private static string setUID(String[] a, int count)
+        /*private static string setUID(String[] a, int count)
         {
             String uid;
 
@@ -94,7 +81,7 @@ namespace iCalGenerator
                 Console.WriteLine("INFO: UID unbekannt, habe neue UID erzeugt " + uid);
             }
             return uid;
-        }
+        }*/
 
         private static string[] getEvents(string filepath)
         {
